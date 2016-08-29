@@ -1,0 +1,23 @@
+language: python
+python:
+    - "3.4"
+
+install:
+    - pip install beautifulsoup4
+    - pip install requests
+    - pip install coveralls
+    - pip install coverage
+    - pip install codacy-coverage
+    - coverage erase
+
+script : coverage run crawler.py http://www.darklegacycomics.com --depth 0
+
+after_success:
+    - coveralls
+    - coverage xml
+    - export CODACY_PROJECT_TOKEN=254d80f3eda14cc88fbc18fadbcab250
+    - python-codacy-coverage -r coverage.xml
+
+notifications:
+    email:
+        - flaesch.arnaud@esgi.fr

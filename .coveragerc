@@ -1,0 +1,8 @@
+[run]
+source = crawler.py
+
+[report]
+omit =
+	*/lib/*
+	*/site-packages/bs4/*
+	*/site-packages/requests/*
